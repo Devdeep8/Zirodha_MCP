@@ -27,7 +27,18 @@ async function init() {
 
 async function getProfile() {
   try {
-    const profile = await kc.getProfile();
+    const profile = await kc.placeOrder(
+        "regular", 
+        {
+
+            exchange : "NSE",
+            tradingsymbol: "ITC",
+            transaction_type: "BUY",
+            quantity:1,
+            product:"CNC",
+            order_type:"MARKET"
+        }
+    );
     console.log("Profile:", profile);
   } catch (err) {
     console.error("Error getting profile:", err);
